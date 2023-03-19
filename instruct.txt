@@ -1,0 +1,19 @@
+Node:
+Dockerfile :
+FROM node
+WORKDIR /app
+COPY . /app
+RUN npm install
+EXPOSE 80
+CMD [ "node", "server.js" ]
+1)docker build .
+2)docker run -p 3000:80 sha256:ec30b2dc4ec11f99ed657aa02f1f9f44b8f34a8d2b6f86e4a53ee9d6fa04dcf5
+3) docker run -p 3001:80 --name node-cont sha256:ec30b2dc4ec11f99ed657aa02f1f9f44b8f34a8d2b6f86e4a53ee9d6fa04dcf5
+docker stop node-cont
+docker start node-cont
+4)docker stop node-cont
+docker stop hardcore_merkle
+docker container prune
+docker image prune
+5)docker build -t node-img:1 .
+6)docker run -p 3000:80 --rm --name node-cont-new node-img:1
